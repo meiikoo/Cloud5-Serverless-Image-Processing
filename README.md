@@ -1,6 +1,26 @@
 # Cloud5-Serverless-Image-Processing
 CS1660 Final Project
 
+## My Contribution — Hao Wang
+
+I was the primary contributor to this project (25 of 44 commits).
+
+- **AI image-generation module** — implemented `generate_image(prompt)`, a
+  wrapper around the OpenAI Images API returning image bytes plus structured
+  metadata (model, latency, request_id, seed). Handles retryable errors
+  (429/500/502/503/504) with exponential backoff (1.5s ×2, max 3 attempts) and
+  parses both base64 and URL response formats.
+- **HTTP entrypoint + CLI** — added the Lambda HTTP handler and a Rust CLI
+  (`clap` + `reqwest`) that calls the backend without exposing the OpenAI key.
+- **CI/CD** — authored and debugged the GitHub Actions workflow: push → Docker
+  build → push to ECR, image tagged with the commit SHA.
+- **Integration & docs** — took part in integration testing and fixed
+  JSON-formatted secret parsing from AWS Secrets Manager; wrote the README
+  setup documentation and recorded my presentation segment.
+
+*Note: AWS infrastructure setup, manual deployments, and final video assembly
+were shared with teammates.*
+
 ## Group Members:
 - Chris White
 - Mia Miller
